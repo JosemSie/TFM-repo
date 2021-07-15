@@ -1,0 +1,7 @@
+/TFM/cerrar
+/TFM/verificar /TFM/view1
+/TFM/view1 /TFM/view1 /TFM/view2 /TFM/view3
+/TFM/view2 /TFM/view2 /TFM/view4
+/TFM/view3 /TFM/view3 /TFM/view4
+/TFM/view4 /TFM/view4 /TFM/cerrar
+/TFM/error
