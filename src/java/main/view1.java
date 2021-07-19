@@ -5,6 +5,7 @@
  */
 package main;
 
+import SecureSession.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,8 +35,8 @@ public class view1 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession misession = request.getSession();
-        Session usu = (Session) misession.getAttribute("usu");
-        SessionController aux = (SessionController) misession.getAttribute("sessionC");
+        SecSession usu = (SecSession) misession.getAttribute("usu");
+        SecSessionController aux = (SecSessionController) misession.getAttribute("sessionC");
         if(usu != null){
             if(aux.isPossible(request.getRequestURI(),usu)){
                 try (PrintWriter out = response.getWriter()) {

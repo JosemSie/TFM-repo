@@ -5,6 +5,7 @@
  */
 package main;
 
+import SecureSession.SecSession;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,11 +35,11 @@ public class cerrar extends HttpServlet {
         System.out.println(request.getRequestURI());
         response.setContentType("text/html;charset=UTF-8");
         HttpSession misession = request.getSession();
-        Session usu = (Session) misession.getAttribute("usu");
+        SecSession usu = (SecSession) misession.getAttribute("usu");
         if(usu != null){
             misession.removeAttribute("usu");
             misession.removeAttribute("sessionC");
-            verificar.sessionL.sessionDestroyed(misession.getId());
+            //verificar.sessionL.sessionDestroyed(misession.getId());
         }
         request.getRequestDispatcher("/vistas/index.jsp").forward(request, response);
     }

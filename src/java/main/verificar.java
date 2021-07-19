@@ -5,6 +5,7 @@
  */
 package main;
 
+import SecureSession.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,11 +17,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "verificar", urlPatterns = {"/verificar"})
 public class verificar extends HttpServlet {
     
-    public static sessionListener sessionL;
-    private SessionController sessionC;
+    //public static sessionListener sessionL;
+    private SecSessionController sessionC;
     public verificar() throws IOException{
-        sessionL = new sessionListener();
-        sessionC = new SessionController();
+        //sessionL = new sessionListener();
+        sessionC = new SecSessionController();
         sessionC.createMap("E:\\NetBeansProjects\\TFM\\src\\java\\conf\\map");
     }
 
@@ -31,14 +32,9 @@ public class verificar extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String contraseña = request.getParameter("contr");
         if("root".equals(usuario) && "123".equals(contraseña)){
-            Session misession = new Session(request.getSession().getId(),"/TFM/verificar") {
-                @Override
-                public boolean isEqual(Session p1) {
-                    return this.getId() == p1.getId();
-                }
-            };
+            SecSession misession = new SecSession(request.getSession().getId(),"/TFM/verificar");
            // HttpSession misession = ;
-            sessionL.sessionCreated(misession);
+            //sessionL.sessionCreated(misession);
             request.getSession().setAttribute("usu", misession);
             request.getSession().setAttribute("sessionC", sessionC);
             request.getRequestDispatcher("view1").forward(request, response);
