@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import java.io.BufferedReader;
@@ -39,7 +34,6 @@ public class SessionController implements HttpSessionListener{
     }
 
     public void sessionCreated(Session event) {
-        //System.out.println("Session created by Id : " + event.getId());
         if(!contiene(event)){
             synchronized (this) {
                 lista.add(event);
@@ -48,7 +42,6 @@ public class SessionController implements HttpSessionListener{
     }
     
     public void sessionDestroyed(Session event) {
-        //System.out.println("Session destroyed by Id : " + event.getId());
         int sol = -1;
         for(int i = 0; i<lista.size() && sol == -1;i++){
             if(event.equals(lista.get(i)))sol = i;

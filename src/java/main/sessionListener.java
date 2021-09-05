@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import java.util.ArrayList;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
@@ -36,7 +29,6 @@ public class sessionListener implements HttpSessionListener{
     }
 
     public void sessionCreated(Object event) {
-        //System.out.println("Session created by Id : " + event.getId());
         if(!contiene(event)){
             synchronized (this) {
                 lista.add(event);
@@ -45,7 +37,6 @@ public class sessionListener implements HttpSessionListener{
     }
     
     public void sessionDestroyed(Object event) {
-        //System.out.println("Session destroyed by Id : " + event.getId());
         int sol = -1;
         for(int i = 0; i<lista.size() && sol == -1;i++){
             if(event.equals(lista.get(i)))sol = i;

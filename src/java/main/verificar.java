@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import SecureSession.*;
@@ -12,15 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "verificar", urlPatterns = {"/verificar"})
 public class verificar extends HttpServlet {
     
-    //public static sessionListener sessionL;
     private SecSessionController sessionC;
     public verificar() throws IOException{
-        //sessionL = new sessionListener();
         sessionC = new SecSessionController();
         sessionC.createMap("RutaMapa");
     }
@@ -33,8 +25,6 @@ public class verificar extends HttpServlet {
         String contraseña = request.getParameter("contr");
         if("root".equals(usuario) && "123".equals(contraseña)){
             SecSession misession = new SecSession(request.getSession().getId(),"/TFM/verificar");
-           // HttpSession misession = ;
-            //sessionL.sessionCreated(misession);
             request.getSession().setAttribute("usu", misession);
             request.getSession().setAttribute("sessionC", sessionC);
             request.getRequestDispatcher("view1").forward(request, response);
