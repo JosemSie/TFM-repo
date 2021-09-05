@@ -22,7 +22,7 @@ public class verificar extends HttpServlet {
     public verificar() throws IOException{
         //sessionL = new sessionListener();
         sessionC = new SecSessionController();
-        sessionC.createMap("E:\\NetBeansProjects\\TFM\\src\\java\\conf\\map");
+        sessionC.createMap("RutaMapa");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
